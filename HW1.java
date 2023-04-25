@@ -14,7 +14,8 @@ public class HW1 {
             String grade = values[1].substring(values[1].indexOf(":") + 2);
             String subject = values[2].substring(values[2].indexOf(":") + 2, values[2].length() - 1);
 
-            sb.append("Студент ").append(surname).append(" получил ").append(grade).append(" по предмету ").append(subject).append(".\n");
+            sb.append("Студент ").append(surname).append(" получил ").append(grade).append(" по предмету ")
+                    .append(subject).append(".\n");
         }
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
