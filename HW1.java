@@ -1,6 +1,8 @@
 import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 public class HW1 {
     public static void main(String[] args) {
@@ -18,12 +20,14 @@ public class HW1 {
                     .append(subject).append(".\n");
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(
+                new OutputStreamWriter(new FileOutputStream("output.txt"), StandardCharsets.UTF_8))) {
             writer.write(sb.toString());
         } catch (IOException e) {
             e.printStackTrace();
             // Запись ошибки в лог-файл
-            try (BufferedWriter logWriter = new BufferedWriter(new FileWriter("log.txt"))) {
+            try (BufferedWriter logWriter = new BufferedWriter(
+                    new OutputStreamWriter(new FileOutputStream("log.txt"), StandardCharsets.UTF_8))) {
                 logWriter.write(e.getMessage());
             } catch (IOException ex) {
                 ex.printStackTrace();
